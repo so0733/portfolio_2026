@@ -7,6 +7,7 @@
 
 ## 🔗 Live Demo & Repository
 
+- 🌐 Live Site: https://portfolio-2026-two-orcin.vercel.app
 - 📦 GitHub: https://github.com/so0733/portfolio_2026
 
 ---
