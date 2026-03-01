@@ -101,8 +101,8 @@ const projects = [
       solution: '모달 상태에 따라 body 스크롤을 제어하는 Lock 로직을 구현하여 인터랙션을 완전히 격리했습니다. 더불어 layoutId를 카드 컨테이너와 텍스트 요소에 분리 적용해 애니메이션 성능을 개선하고, 텍스트 왜곡 없이 자연스러운 확대·축소 전이를 구현했습니다.',
     },
     tech: ['Next.js', 'TypeScript', 'Framer Motion', 'Tailwind CSS', 'Lucide React'],
-    github: 'https://github.com/...',
-    link: 'https://...',
+    github: 'https://github.com/so0733/portfolio_2026',
+    link: 'https://portfolio-2026-two-orcin.vercel.app/',
     image: '/project_img/project_06.png',
   },
 ];
