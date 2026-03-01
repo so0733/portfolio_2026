@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
+/* 디자인 토큰(색상, 반경 등) 정의 */
+@theme {
+  --color-primary: #6a8fe7;         /* 메인 컬러 */
+  --color-primary-light: #8ec5fc;   /* 보조 컬러1 */
+  --color-primary-soft: #e0c3fc;    /* 보조 컬러2 */
+  
+  --background: var(--bg);          /* 현재 테마 배경*/
+  --foreground: var(--text);        /* 현재 테마 텍스트 */
+  
+  --radius-card: 1rem;              /* 카드 UI 공통 라운드 값 */
+}
+
+/* 전역 CSS 변수 */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* 라이트(기본) 테마 */
+  --bg: #ffffff;
+  --bg-soft: #f8fafc;
+  --text: #041E42;
+  --text-muted: #64748b;
+  --border: #e5e7eb;
+
+  /* 그라데이션 정의 */
+  --gradient-primary: linear-gradient(
+    120deg,
+    #6a8fe7 0%,
+    #8ec5fc 50%,
+    #e0c3fc 100%
+  );
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  /* 다크 테마 */
+  --bg: #0b1020;
+  --bg-soft: #111827;
+  --text: #e5e7eb;
+  --text-muted: #94a3b8;
+  --border: #1f2933;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* 전역 기본 스타일 정의 */
+@layer base {
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, "Apple SD Gothic Neo",
+      "Noto Sans KR", Arial, sans-serif;
+    line-height: 1.6;
+
+    /* 테마 전환 시 색상 부드럽게 변경 */
+    @apply transition-colors duration-200;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* UI 패턴을 유틸리티 클래스로 추상화 */
+@layer utilities {
+   /* 그라데이션 텍스트 */
+  .gradient-text {
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* 그라데이션 배경 */
+  .gradient-bg {
+    background: var(--gradient-primary);
+  }
+
+  /* 카드 UI 스타일 */
+  .card {
+    background-color: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 1.5rem;
+    @apply transition-all duration-300 hover:shadow-lg;
+  }
+
+  /* 섹션 레이아웃 */
+  .section {
+    @apply py-20 px-5 max-w-7xl mx-auto;
+  }
+  
+  * {
+    cursor: none;
+  }
 }
